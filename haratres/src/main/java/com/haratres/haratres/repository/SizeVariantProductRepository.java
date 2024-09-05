@@ -1,6 +1,5 @@
 package com.haratres.haratres.repository;
 
-import com.haratres.haratres.model.ColorVariantProduct;
 import com.haratres.haratres.model.SizeVariantProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

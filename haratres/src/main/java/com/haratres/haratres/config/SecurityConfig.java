@@ -10,7 +10,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,11 +40,11 @@ public class SecurityConfig {
                                 .requestMatchers("/login/**", "/register/**").permitAll()
                                 .requestMatchers("/api/products/**").hasRole("ADMIN")
                                 .requestMatchers("/api/cart/**").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers("/api/admin/price/update").hasRole("ADMIN") // Sadece ADMIN erişebilir
+                                .requestMatchers("/api/admin/price/update").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .exceptionHandling(exception ->
-                        exception.accessDeniedHandler(accessDeniedHandler())) // Access Denied Handler ekleniyor
+                        exception.accessDeniedHandler(accessDeniedHandler()))
                 .userDetailsService(userDetailsServiceImpl)
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
